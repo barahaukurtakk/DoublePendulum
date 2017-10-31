@@ -1,0 +1,2 @@
+# DoublePendulum
+Eðlisfræðiverkefnið
