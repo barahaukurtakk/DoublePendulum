@@ -6,10 +6,10 @@ class Ball {
 
     Ball(float mass) {
         location = new PVector();
-        angle = PI/4;
-        aVel = 0.0;
-        aAcc = 0.0;
-        Bobr = 12;
+        angle = PI/4; //Upphafshorn
+        aVel = 0.0;   //Upphafshornhraði
+        aAcc = 0.0;   //Upphafshornhröðun
+        Bobr = 12;    //Lengd Stanganna
         this.mass = mass;
     }
 
