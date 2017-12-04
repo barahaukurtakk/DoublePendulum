@@ -1,29 +1,31 @@
-class Bob {
+class Ball {
     PVector location;
-    float theta, omega, alpha;
+    float angle, aVel, aAcc; 
     float mass;
+    float Bobr;
 
-    Bob(float mass) {
+    Ball(float mass) {
         location = new PVector();
-        theta = PI/4;
-        omega = 0.0;
-        alpha = 0.0;
+        angle = PI/4;
+        aVel = 0.0;
+        aAcc = 0.0;
+        Bobr = 12;
         this.mass = mass;
     }
 
-    void update(float calculatedAlpha, PVector origin, float r) {
-        alpha = calculatedAlpha;
-        omega += alpha;
-        theta += omega;
+    void update(float calcaAcc, PVector origin, float len) {
+        aAcc = calcaAcc; //Hornhröðunin er sú sem fundin var með Runge-Kutta aðferðinni.
+        aVel += aAcc;    //Hornhraðinn er uppfærður eftir hornhröðuninni.
+        angle += aVel;   //Hornið er uppfært eftir hornhraðanum.
 
-        // Origin is point we are moving from
-        // For first bob, origin is the 'true' origin
-        // For second bob, origin is the first bob
+        // Origin er upphafspunktur sem við vinnum útfrá.
+        // Þannig er Origin upphafspunktur fyrsta pendúlsins,
+        // en kúlan á fyrri pendúlnum er upphafspunktur pendúls númer 2.
         location.set(origin.copy());
-        location.add(r * sin(theta), r * cos(theta), 0);
+        location.add(len * sin(angle), len * cos(angle), 0);
     }
-
+    
     void display() {
-        ellipse(location.x, location.y, 7, 7);
+        ellipse(location.x, location.y, Bobr, Bobr);
     }
 }
